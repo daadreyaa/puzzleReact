@@ -67,36 +67,51 @@ const GPA = (props) => {
 
 function ChildModal() {
     const [open, setOpen] = React.useState(false);
+    let id=0;
+    let y;
     const handleOpen = () => {
         setOpen(true);
     };
     const handleClose = () => {
         setOpen(false);
     };
-   
-    const modal = (props) => {
-        <Modal
+    function onpress(x){
+        if (x==1){
+            return <LanguageSelect/>
+        }
+        
+        else if (x==2){
+            return <PolygonPuzzle/>
+        }
+        else if(x==3){
+            return <PatternPuzzle/>
+        }
+        else{
+            console.log(x)
+            return <ImgShuffle/> 
+        }
+           
+    }
+
+    return (
+        <>
+            <Button onClick={handleOpen}>{id=1}. Language Puzzle</Button>
+            <br/>
+            <Button onClick={handleOpen}>{id=2}. Polygon Puzzle</Button>
+            <br/>
+            <Button onClick={handleOpen}>{id=3}. Pattern Puzzle</Button>
+            <br/>
+            <Button onClick={handleOpen}>{id=4}. Image Shuffle</Button>
+            <Modal
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="child-modal-title"
                 aria-describedby="child-modal-description"
             >
                 <Box sx={{ ...style, width: 200 }}>
-                    <props.name/>   
+                {onpress(id)}   
                 </Box>
             </Modal>
-    }
-
-    return (
-        <>
-            <Button onClick={handleOpen}>Language Puzzle</Button>
-            <modal name="LanguageSelect"/>
-            <br/>
-            <Button onClick={handleOpen}>Polygon Puzzle</Button>
-            <br/>
-            <Button onClick={handleOpen}>Pattern Puzzle</Button>
-            <br/>
-            <Button onClick={handleOpen}>Image Shuffle</Button>
         </>
     );
 }
