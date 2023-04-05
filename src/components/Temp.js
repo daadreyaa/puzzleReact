@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import { Button } from '@mui/material'
 
 import screen1 from '../assets/img/screenshots/1.png'
@@ -13,9 +14,9 @@ const Temp = () => {
 
 
     function showPuzzle(puzzleId) {
-        debugger;
-        <GPA puzzleId={puzzleId} />
-        debugger;
+        console.log(puzzleId);
+        <ChildModal />
+        // ReactDOM.render(<GPA puzzleId={puzzleId} />);
     }
 
 
@@ -29,5 +30,6 @@ const Temp = () => {
         </>
     )
 }
+
 
 export default Temp
