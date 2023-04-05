@@ -2,6 +2,7 @@ import React from 'react'
 import PatternLock from "react-pattern-lock";
 import Button from "@mui/material/Button";
 import axios from 'axios';
+import { verify } from '../utils.js/passwords';
 
 const PatternPuzzle = (props) => {
     const [path, setPath] = React.useState([]);
@@ -37,17 +38,9 @@ const PatternPuzzle = (props) => {
             userId: props.userId,
             password: path.join(',')
         };
-        console.log(loginData.password)
+        console.log('loginData ' + loginData.password)
 
-        axios.post('/login', loginData)
-            .then((response) => {
-                console.log(response)
-                props.onSuccess();
-            })
-            .catch((err) => {
-                console.log(err)
-                props.onFailure();
-            });
+        verify(loginData, props.onSuccess, props.onFailure);
 
 
     }

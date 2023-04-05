@@ -40,5 +40,7 @@ function graphicalPasswordAuthentication(api, userId, puzzleId, onSuccess, onFai
 
 window.graphicalPasswordAuthentication = graphicalPasswordAuthentication;
 
-graphicalPasswordAuthentication(1, 1)
+const onSuccess = () => window.alert("success");
+const onFailure = () => window.alert("failure");
 
+graphicalPasswordAuthentication(1, '64152d7868108c5495cfac5a') //, 1, onSuccess, onFailure)
