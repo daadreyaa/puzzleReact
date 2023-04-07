@@ -48,7 +48,13 @@ const GPA = (props) => {
 
     return (
         <div>
-            <Button variant="outlined" onClick={handleOpen}>Open modal</Button>
+            <form>
+            Enter your name<br/><br/>
+            <input type={Text}/><br/><br/>
+            Enter your password<br/><br/>
+            <input type={'password'}/><br/><br/>
+            </form>
+            <Button variant="outlined" onClick={handleOpen}>choose puzzles</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -69,15 +75,16 @@ function ChildModal() {
     const [open, setOpen] = React.useState(false);
     let id=0;
     let y;
-    const handleOpen = () => {
+    const handleOpen = (event) => {
         setOpen(true);
     };
     const handleClose = () => {
         setOpen(false);
     };
     function onpress(x){
+        x=event.target.id;
         if (x==1){
-            return <LanguageSelect/>
+           return <LanguageSelect/>
         }
         
         else if (x==2){
@@ -87,7 +94,6 @@ function ChildModal() {
             return <PatternPuzzle/>
         }
         else{
-            console.log(x)
             return <ImgShuffle/> 
         }
            
@@ -95,21 +101,21 @@ function ChildModal() {
 
     return (
         <>
-            <Button onClick={handleOpen}>{id=1}. Language Puzzle</Button>
+            <Button onClick={handleOpen} id={1}>Language Puzzle</Button>
             <br/>
-            <Button onClick={handleOpen}>{id=2}. Polygon Puzzle</Button>
+            <Button onClick={handleOpen} id={2}>Polygon Puzzle</Button>
             <br/>
-            <Button onClick={handleOpen}>{id=3}. Pattern Puzzle</Button>
+            <Button onClick={handleOpen} id={3}>Pattern Puzzle</Button>
             <br/>
-            <Button onClick={handleOpen}>{id=4}. Image Shuffle</Button>
+            <Button onClick={handleOpen} id={4}>Image Shuffle</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="child-modal-title"
                 aria-describedby="child-modal-description"
             >
-                <Box sx={{ ...style, width: 200 }}>
-                {onpress(id)}   
+                <Box sx={{ ...style, width: 200 }}>  
+                  {onpress(1)}
                 </Box>
             </Modal>
         </>
