@@ -81,8 +81,8 @@ function ChildModal() {
     const handleClose = () => {
         setOpen(false);
     };
-    function onpress(x){
-        x=event.target.id;
+    function onpress(){
+        let x=event.target.id;
         if (x==1){
            return <LanguageSelect/>
         }
@@ -115,7 +115,7 @@ function ChildModal() {
                 aria-describedby="child-modal-description"
             >
                 <Box sx={{ ...style, width: 200 }}>  
-                  {onpress(1)}
+                  {onpress()}
                 </Box>
             </Modal>
         </>
