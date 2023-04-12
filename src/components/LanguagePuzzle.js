@@ -23,6 +23,7 @@ const LanguageSelect = () => {
     const [letters, setLetters] = useState(en);
     const [solution, setSolution] = useState([]);
 
+
     function onSelectLanguage(languageCode) {
         // setSolution([])
 
@@ -65,6 +66,16 @@ const LanguageSelect = () => {
         return array;
     }
 
+ function onKeyDown(e) {
+        // if (e.keyCode === 8) {
+        //     let str=e.target.value;
+        //     str=str.substring(0,str.length-1);
+        //     setSolution(["",str]);
+        // }
+        let str=e.target.value;
+            str=str.substring(0,str.length-1);
+            setSolution(["",str]);
+    }
 
     return (
         <>
@@ -73,8 +84,12 @@ const LanguageSelect = () => {
                     <div className="content">
 
                         <div className="container puzzle-box">
+                            
                             {/* <h1>Language Puzzle</h1> */}
                             <h4>Chose a combination of letters in your preferred language</h4>
+                            <div className="container">
+                                <input type="text" value={solution.join("")} onKeyDown={onKeyDown}/>
+                            </div>
                             <ReactLanguageSelect
                                 defaultLanguage="en"
                                 names={"international"}
@@ -83,16 +98,13 @@ const LanguageSelect = () => {
                                 onSelect={onSelectLanguage}
                                 languages={["en", "ta", "hi", "ko"]}
                             />
+                            <Button onClick={onKeyDown}variant="outlined" >xC</Button>
 
                             {/* <h6>The selected language is <h4> {selectedLang} </h4> </h6> */}
                             <div className="container"><div className="grid">
 
                                 {letters.map(a => (<Button variant="outlined" onClick={() => setSolution([...solution, a])} >{a}</Button>))}
                             </div></div>
-
-                            <div className="container">
-                                <h3>{solution.join("")}</h3>
-                            </div>
 
                             {/* <Button variant="contained" onClick={console.log("The data is : " + solution.join(""))}>Confirm</Button> */}
                             {/* <SubmitButton password={solution.join("")} newUser={newUser} email={email} domainName={domainName} toUpdate={toUpdate} puzzleId={puzzleId} /> */}
