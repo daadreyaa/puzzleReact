@@ -35,7 +35,8 @@ function renderSwitch(puzzleId, userId, onSuccess, onFailure) {
             return <LanguageSelect />;
         case 4:
             return <ImgShuffle />;
-        default: return <ChildModal />;
+        // default: return <PatternPuzzle userId={userId} onSuccess={onSuccess} onFailure={onFailure} newUser={true} />;
+        default: <Temp />
         // return <Puzzles puzzles_selected={[1, 2, 3, 4, 5]} />;
     }
 }
@@ -48,7 +49,7 @@ const GPA = (props) => {
 
     return (
         <div>
-            <Button variant="outlined" onClick={handleOpen}>Open modal</Button>
+            <Button variant="outlined" onClick={handleOpen}>Authenticate</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -56,8 +57,9 @@ const GPA = (props) => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    {renderSwitch(props.puzzleId, props.userId, props.onSuccess, props.onFailure)}
+                    {/* {renderSwitch(props.puzzleId, props.userId, props.onSuccess, props.onFailure)} */}
                     {/* <PatternPuzzle /> */}
+                    <ImgShuffle />
                 </Box>
             </Modal>
         </div>

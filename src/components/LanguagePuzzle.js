@@ -4,7 +4,7 @@ import { useState } from "react";
 import 'react-languages-select/css/react-languages-select.css';
 import { Button } from '@mui/material';
 
-const LanguageSelect = () => {
+const LanguageSelect = (props) => {
 
     var characters = "abcdefg".split("")
     // console.log("the aray is " + characters);
@@ -19,6 +19,8 @@ const LanguageSelect = () => {
 
     const ko = "아악안알암압앙앞애액앵야얀약양얘어억언얼엄업엉에여".split('')
 
+    const register = () => { }
+    const login = () => { }
 
     const [letters, setLetters] = useState(en);
     const [solution, setSolution] = useState([]);
@@ -93,7 +95,11 @@ const LanguageSelect = () => {
                             <div className="container">
                                 <h3>{solution.join("")}</h3>
                             </div>
-
+                            {props.newUser ?
+                                <Button variant="outlined" color="success" onClick={register} style={{ marginLeft: "10px" }}>Register</Button>
+                                :
+                                <Button variant="outlined" color="success" onClick={login} style={{ marginLeft: "10px" }}>Login</Button>
+                            }
                             {/* <Button variant="contained" onClick={console.log("The data is : " + solution.join(""))}>Confirm</Button> */}
                             {/* <SubmitButton password={solution.join("")} newUser={newUser} email={email} domainName={domainName} toUpdate={toUpdate} puzzleId={puzzleId} /> */}
 

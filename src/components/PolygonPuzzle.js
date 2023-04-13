@@ -5,7 +5,7 @@ import $ from 'jquery';
 
 
 var a = [null, null, null, null, null]
-function PolygonPuzzle() {
+function PolygonPuzzle(props) {
     const [color, setcolor] = useState('#fff')
     $(".up").on("mousedown", function (e) {
         $(".up").css("border-bottom", " 100px solid" + color)
@@ -32,6 +32,9 @@ function PolygonPuzzle() {
         console.log(a);
     }
 
+    const register = () => { }
+    const login = () => { }
+
     return (
         <div className='full-screen bg-home3'>
             <div className="container1">
@@ -49,7 +52,12 @@ function PolygonPuzzle() {
                     {/* <Button variant='contained' className='temp' onClick={() => console.log(a)}>Confirm</Button>
                     <Button variant='outlined' onClick={console.log(a.join(''))}>Submit</Button> */}
                     {/* <Button variant="outlined" color="error" onClick={reset} style={{ marginRight: "30px" }}>Reset</Button> */}
-                    <Button variant="outlined" color="success" onClick={submit}>Submit</Button>
+                    {/* <Button variant="outlined" color="success" onClick={submit}>Submit</Button> */}
+                    {props.newUser ?
+                        <Button variant="outlined" color="success" onClick={register} style={{ marginLeft: "10px" }}>Register</Button>
+                        :
+                        <Button variant="outlined" color="success" onClick={login} style={{ marginLeft: "10px" }}>Login</Button>
+                    }
                     {/* </div> */}
                     {/* <SubmitButton password={a.join('')} newUser={newUser} email={email} domainName={domainName} toUpdate={toUpdate} puzzleId={puzzleId} /> */}
 

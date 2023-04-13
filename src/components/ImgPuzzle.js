@@ -122,15 +122,15 @@ img.onload = function () {
 }
 
 
-const ImgShuffle = () => {
-
-
-
+const ImgShuffle = (props) => {
 
     var generate = () => {
         console.log("selected value: " + value);
 
     }
+
+    const register = () => { }
+    const login = () => { }
 
     return (
         <>
@@ -141,7 +141,12 @@ const ImgShuffle = () => {
                         <center><div id="wrapper" >
                         </div></center>
                         <br />
-                        <Button variant="contained" onClick={generate} >Generate</Button>
+                        {props.newUser ?
+                            <Button variant="outlined" color="success" onClick={register} style={{ marginLeft: "10px" }}>Register</Button>
+                            :
+                            <Button variant="outlined" color="success" onClick={login} style={{ marginLeft: "10px" }}>Login</Button>
+                        }
+                        {/* <Button variant="contained" onClick={generate} >Generate</Button> */}
                         {/* <SubmitButton password={value.join("")} newUser={newUser} email={email} domainName={domainName} toUpdate={toUpdate} puzzleId={puzzleId} /> */}
 
                     </div>
