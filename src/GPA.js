@@ -69,16 +69,41 @@ const GPA = (props) => {
 
 function ChildModal() {
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => {
+    let id = 0;
+    let y;
+    const handleOpen = (event) => {
         setOpen(true);
     };
     const handleClose = () => {
         setOpen(false);
     };
+    function onpress() {
+        let x = event.target.id;
+        if (x == 1) {
+            return <LanguageSelect />
+        }
+
+        else if (x == 2) {
+            return <PolygonPuzzle />
+        }
+        else if (x == 3) {
+            return <PatternPuzzle />
+        }
+        else {
+            return <ImgShuffle />
+        }
+
+    }
 
     return (
         <>
-            <Button onClick={handleOpen}>Open Child Modal</Button>
+            <Button onClick={handleOpen} id={1}>Language Puzzle</Button>
+            <br />
+            <Button onClick={handleOpen} id={2}>Polygon Puzzle</Button>
+            <br />
+            <Button onClick={handleOpen} id={3}>Pattern Puzzle</Button>
+            <br />
+            <Button onClick={handleOpen} id={4}>Image Shuffle</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -86,11 +111,7 @@ function ChildModal() {
                 aria-describedby="child-modal-description"
             >
                 <Box sx={{ ...style, width: 200 }}>
-                    <h2 id="child-modal-title">Text in a child modal</h2>
-                    <p id="child-modal-description">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    </p>
-                    <Button onClick={handleClose}>Close Child Modal</Button>
+                    {onpress()}
                 </Box>
             </Modal>
         </>
